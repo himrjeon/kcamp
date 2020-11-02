@@ -29,6 +29,6 @@ public class NoticeApiController {
     @DeleteMapping("/api/v2/notice/{id}")
     public Long delete(@PathVariable Long id) {
         noticeService.delete(id);
-        return id;8
+        return id;
     }
 }
