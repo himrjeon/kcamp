@@ -1,0 +1,43 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">뉴스룸</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module-medium" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <table class="table table-horizontal table-bordered">
+                        <thead class="thead-strong">
+                        <tr>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>등록일</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        {{#news}} <!-- posts라는 List를 순회, for문과 동일하게 생각 -->
+                        <tr>
+                            <td><a href="/news/detail/{{id}}">{{title}}</a></td>
+                            <td>{{author}}</td>
+                            <td>{{modifiedDate}}</td>
+                        </tr>
+                        {{/news}}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footermain}}

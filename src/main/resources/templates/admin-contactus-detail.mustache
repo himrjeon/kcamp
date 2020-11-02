@@ -1,0 +1,22 @@
+{{>layout/headeradmin}}
+
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">문의사항</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">{{guestbook.guestname}}</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            <p>연락처 : {{guestbook.phonenum}}</p>
+                            <p>이메일 : {{guestbook.email}}</p>
+                            <p>문의내용 : {{guestbook.content}}</p>
+                            <p>등록일자 : {{guestbook.modifiedDate}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footeradmin}}

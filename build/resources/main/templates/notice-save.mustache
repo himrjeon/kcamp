@@ -1,0 +1,51 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">후기 등록</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module-medium" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="col-md-13">
+                        <form>
+                            <div class="form-group">
+                                <label for="title">제목</label>
+                                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+                            </div>
+                            <div class="form-group">
+                                <label for="author"> 작성자 </label>
+                                <input type="text" class="form-control" id="author" placeholder="작성자를 입력하세요">
+                            </div>
+                            <div class="form-group">
+                                <label for="author">이용차량선택</label>
+                                <select id="selectcar" name="selectcar" class="form-control">
+                                    <option value="코치맨오라이언">코치맨오라이언</option>
+                                    <option value="코치맨프리렌더">코치맨프리렌더</option>
+                                    <option value="벤츠스프린터">벤츠스프린터(예정)</option>
+                                    <option value="스타렉스캠핑카">스타렉스캠핑카</option>
+                                    <option value="레이">레이</option>=
+                                </select>
+                            </div>
+                            <label for="content"> 후기 </label>
+                            <textarea class="form-control" id="summernote"
+                                      name="content" placeholder="content" rows="7"></textarea>
+                        </form>
+
+                        <a href="/review" role="button" class="btn btn-g btn-round">취소</a>
+                        <button type="button" class="btn btn-primary" id="btn-notice-save">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footerboard}}

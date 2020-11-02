@@ -1,0 +1,86 @@
+<hr class="divider-d">
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7">
+                <p class="copyright font-alt">업체명: (주)아이에스브라더스(IS BROTHERS)</p>
+                <p class="copyright font-alt">주소: 서울 서초구 양재대로11길 36, 서울오토갤러리 다동 B117호</p>
+                <p class="copyright font-alt">대표: 이상오</p>
+                <p class="copyright font-alt">사업자등록번호: 698-86-02094</p>
+                <p class="copyright font-alt">대표전화: 1833-6245</p>
+            </div>
+            <div class="col-sm-6">
+                <hr class="divider-d">
+                <p class="copyright font-alt">&copy; 2020<a href="index.html">CSLab</a>, All Rights Reserved</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+</main>
+
+<!--
+JavaScripts
+=============================================
+-->
+<script src="https://uicdn.toast.com/editor/2.0.0/toastui-editor-all.min.js"> </script>
+<script src="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.js"></script>
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/lib/wow/dist/wow.js"></script>
+<script src="/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+<script src="/lib/isotope/dist/isotope.pkgd.js"></script>
+<script src="/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+<script src="/lib/flexslider/jquery.flexslider.js"></script>
+<script src="/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="/lib/smoothscroll.js"></script>
+<script src="/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/app/index.js"></script>
+<script src = "/summernote/summernote-lite.js"></script>
+<script src = "/summernote/lang/summernote-ko-KR.js"></script>
+<script>
+$(document).ready(function() {
+	var sendFile = function (file, el) {
+	      var form_data = new FormData();
+	      form_data.append('file', file);
+	      $.ajax({
+	        data: form_data,
+	        type: "POST",
+	        url: '/file',
+	        cache: false,
+	        contentType: false,
+	        enctype: 'multipart/form-data',
+	        processData: false,
+	        success: function(url) {
+	        		$('#summernote').summernote('insertImage', url);
+		        $('#imageBoard > ul').append('<li><img src="'+ url +'" width="480" height="auto"/></li>');
+	        }
+	      });
+	    }
+	$('#summernote').summernote({
+        height: 300,
+        minHeight: null,
+        maxHeight: null,
+        focus: true,
+		lang: "ko-KR",
+	    placeholder: '내용을 입력하세요.',
+        callbacks: {
+          onImageUpload: function(files, editor, welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+              sendFile(files[i], this);
+            }
+          }
+        }
+      });
+});
+</script>
+</body>
+</html>

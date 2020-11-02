@@ -1,0 +1,25 @@
+{{>layout/headeradmin}}
+
+
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">K-CAMP 관리자 페이지</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">관리자</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            {{#uName}}
+                                <p>
+                                    반갑습니다. 관리자 {{uName}} 님.
+                                </p>
+                            {{/uName}}
+                            <p>좌측 메뉴 선택 시 화면 이동</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footeradmin}}
