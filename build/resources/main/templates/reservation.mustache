@@ -1,0 +1,59 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">RESERVATION</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module">
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col-sm-12"><img src="/image/campingfee.jpg" alt="Title of Image" style="max-width: 50%;"/></div>
+                <div class="col-sm-12"><img src="/image/reimg2.jpg" alt="Title of Image" style="max-width: 50%;"/></div>
+                <div class="col-sm-12"><img src="/image/reimg3.jpg" alt="Title of Image" style="max-width: 50%;"/></div>
+                <div class="col-sm-12"><img src="/image/reimg4.jpg" alt="Title of Image" style="max-width: 50%;"/></div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+    </section>
+    <section class="module-medium" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div style="text-align: right;">
+                            <a href="/posts/save" role="button" class="btn btn-border-d btn-round">글쓰기</a>
+                    </div>
+                    <br>
+                    <table class="table table-horizontal table-bordered">
+                        <thead class="thead-strong">
+                        <tr>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>등록일</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        {{#posts}} <!-- posts라는 List를 순회, for문과 동일하게 생각 -->
+                        <tr>
+                            <td><a href="/posts/detail/{{id}}">{{title}}</a></td>
+                            <td>{{author}}</td>
+                            <td>{{modifiedDate}}</td>
+                        </tr>
+                        {{/posts}}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footermain}}

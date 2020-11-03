@@ -82,6 +82,20 @@ public class AdminController {
         return "admin-schedule-detail";
     }
 
+    @GetMapping("/admin/schedule/update/{id}")
+    public String scheduleUpdate(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        // model.addAttribute("news", newsServices.findAllDesc());
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("schedulelist", bookCarService.getBoardList(pageable));
+
+        return "admin-schedule-update";
+    }
+
     @GetMapping("/admin/schedulePopup")
     public String schedulePopup(Model model, @LoginUser SessionUser user) {
         if(user != null) {
