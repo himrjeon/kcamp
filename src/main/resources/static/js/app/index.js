@@ -639,7 +639,7 @@ var main = {
                                   data: formData
                               }).done(function() {
                                   alert('회원 정보가 수정되었습니다.');
-                                  window.location.href = '/admin/user';
+                                  window.location.href = '/';
                               }).fail(function (error) {
                                   alert(JSON.stringfy(error));
                               });
@@ -690,6 +690,27 @@ passwordc : function () {
         } else{
            window.location.href ='/contactus/detail/'+id.value;
         }
+
+        },
+
+postcommentsave : function () {
+     var data = {
+         memo: $('#memocontent').val(),
+         author: $('#memoauthor').val()
+     };
+     var id = $('#id').val();
+     $.ajax({
+                 type: 'POST',
+                 url: '/api/v1/contactcomment/'+id,
+                 dataType: 'json',
+                 contentType:'application/json; charset=utf-8',
+                 data: JSON.stringify(data)
+             }).done(function() {
+                 alert('글이 등록되었습니다.');
+                 window.location.reload();
+             }).fail(function (error) {
+                 alert(JSON.stringify(error));
+             });
 
         },
 

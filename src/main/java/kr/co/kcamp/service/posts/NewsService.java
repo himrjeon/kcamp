@@ -49,6 +49,14 @@ public class NewsService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public List<NewsListResponseDto> findTop3Desc() {
+        return newsRepository.findTop3Desc().stream()
+                .map(NewsListResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
+                // 결과로 넘어온 posts의 스트림을 map을 통해 listdto로 변환하고 list로 변환하는 메소드.
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public List<NewsListResponseDto> getBoardList(Pageable pageable) {
         return newsRepository.findAll(pageable).stream()

@@ -3,11 +3,12 @@ package kr.co.kcamp.web;
 import kr.co.kcamp.config.auth.LoginUser;
 import kr.co.kcamp.config.auth.dto.SessionUser;
 import kr.co.kcamp.domain.DealerUser;
+import kr.co.kcamp.domain.GuestBook;
+import kr.co.kcamp.domain.GuestBookRepository;
+import kr.co.kcamp.domain.Posts;
 import kr.co.kcamp.service.cars.*;
 import kr.co.kcamp.service.popup.PopUpS3UploadService;
-import kr.co.kcamp.service.posts.GuestBookService;
-import kr.co.kcamp.service.posts.NoticeService;
-import kr.co.kcamp.service.posts.PostsService;
+import kr.co.kcamp.service.posts.*;
 import kr.co.kcamp.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -26,10 +27,12 @@ import java.util.List;
 public class IndexController {
 
     private final PostsService postsService;
-    private final NoticeService noticeService;
+    private final NewsService newsService;
     private final BookCarService bookCarService;
     private final GuestBookService guestBookService;
     private final ShowRoomS3UploadService showRoomS3UploadService;
+    private final GuestBookRepository guestBookRepository;
+    private final ContactCommentService contactCommentService;
     private final HttpSession httpSession;
     private final DirectCarsS3UploadService directCarsS3UploadService;
 
@@ -37,9 +40,15 @@ public class IndexController {
 
     @GetMapping("/")
     public String indexx(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("notice", noticeService.findTop3Desc());
+        model.addAttribute("notice", newsService.findTop3Desc());
+        List<ShowRoomDto> importCarsDtoList = showRoomS3UploadService.findTop6Desc();
+        model.addAttribute("galleryList", importCarsDtoList);
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "indextest";
@@ -202,6 +211,10 @@ public class IndexController {
 
         GuestBookResponseDto dto = guestBookService.findById(id);
         model.addAttribute("guestbook",dto);
+
+        // 댓글 불러오기
+        GuestBook entity = guestBookRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+        model.addAttribute("comment",contactCommentService.findALLByPost(entity));
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
