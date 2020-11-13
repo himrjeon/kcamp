@@ -203,26 +203,33 @@
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                             <span class="icon-profile-male" aria-hidden="true"></span>
                         </a>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/guide">GUIDE</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/schedule">SCHEDULE</a>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/reservation">RESERVATION</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/gallery">GALLERY</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/location">LOCATION</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/contactus">Q&A</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/review">REVIEW</a>
-
+                        <ul class="dropdown-menu">
+                            {{#uName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
+                                <li>
+                                    <a href="#">사용자이름 : {{uName}}</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">로그아웃</a>
+                                    <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                                </li>
+                            {{/uName}}
+                            {{#dName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
+                                <li>
+                                    <a href="#">사용자이름 : {{dName}}</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">로그아웃</a>
+                                    <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                                </li>
+                            {{/dName}}
+                            {{^uName}}
+                                {{^dName}}
+                                    <li>
+                                        <a href="/personlogin">로그인</a>
+                                    </li>
+                                {{/dName}}
+                            {{/uName}}
+                        </ul>
                     </li>
                 </ul>
             </div>

@@ -50,8 +50,7 @@ public class IndexController {
         return "indextest";
     }
 
-
-    @GetMapping("/guide")
+    @GetMapping("/about")
     public String about(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
