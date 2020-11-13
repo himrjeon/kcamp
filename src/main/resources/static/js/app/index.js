@@ -374,7 +374,8 @@ var main = {
                      phonenum: $('#phonenum').val(),
                      email: $('#email').val(),
                      content: $('#content').val(),
-                     password: $('#password').val()
+                     password: $('#password').val(),
+                     rentday: $('#rentday').val()
                  };
                  $.ajax({
                              type: 'POST',

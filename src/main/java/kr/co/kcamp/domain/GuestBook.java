@@ -24,6 +24,9 @@ public class GuestBook extends BaseTimeEntity {
     @Column(nullable = false)
     private String phonenum;
 
+    @Column
+    private String rentday;
+
     @Column(length = 500) // 테이블의 칼럼 나타내며 굳이 선언하지 않아도 가능함. 사용하는 이유는 추가 변경 옵션이 있을 때 사용
     private String email;
 
@@ -34,13 +37,14 @@ public class GuestBook extends BaseTimeEntity {
     private String password;
 
     @Builder // 해당 클래스 빌더패턴 클래스 생성, 생성자 상단 선언시 생성자 포함된 필드만 빌더 포함
-    public GuestBook(String guestname, String phonenum, String email, String content, String title, String password) {
+    public GuestBook(String guestname, String phonenum, String email, String content, String title, String password, String rentday) {
         this.guestname = guestname;
         this.phonenum = phonenum;
         this.email = email;
         this.content = content;
         this.title = title;
         this.password = password;
+        this.rentday = rentday;
     }
 
     public void update(String content) {

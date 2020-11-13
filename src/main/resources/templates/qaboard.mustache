@@ -22,16 +22,16 @@
                         <thead class="thead-strong">
                         <tr>
                             <th>제목</th>
+                            <th>예약희망날짜</th>
                             <th>작성자</th>
-                            <th>등록일</th>
                         </tr>
                         </thead>
                         <tbody id="tbody">
                         {{#guestbook}} <!-- posts라는 List를 순회, for문과 동일하게 생각 -->
                         <tr>
                             <td><a href="/password/{{id}}">{{title}}</a></td>
+                            <td>{{rentday}}</td>
                             <td>{{guestname}}</td>
-                            <td>{{modifiedDate}}</td>
                         </tr>
                         {{/guestbook}}
                         </tbody>
@@ -61,6 +61,11 @@
                         <div class="form-group">
                             <label class="sr-only" for="name">Name</label>
                             <input class="form-control" type="text" id="guestname" name="guestname" placeholder="성함*" required="required" data-validation-required-message="성함"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Rent</label>
+                            <input class="form-control" type="date" id="rentday" name="rentday" placeholder="예약희망날짜*" required="required" data-validation-required-message="예약희망날짜"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">

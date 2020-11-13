@@ -16,15 +16,17 @@ public class GuestBookSaveRequestDto {
     private String content;
     private String title;
     private String password;
+    private String rentday;
 
     @Builder
-    public GuestBookSaveRequestDto(String guestname, String phonenum, String email, String content, String title, String password) {
+    public GuestBookSaveRequestDto(String guestname, String phonenum, String email, String content, String title, String password, String rentday) {
         this.guestname = guestname;
         this.phonenum = phonenum;
         this.email = email;
         this.content = content;
         this.title = title;
         this.password = password;
+        this.rentday = rentday;
     }
 
     public GuestBook toEntity() {
@@ -35,6 +37,7 @@ public class GuestBookSaveRequestDto {
                 .content(content)
                 .title(title)
                 .password(password)
+                .rentday(rentday)
                 .build();
     }
 }

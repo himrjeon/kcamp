@@ -14,6 +14,7 @@ public class GuestBookListResponseDto {
     private String content;
     private String title;
     private String password;
+    private String rentday;
     private LocalDateTime modifiedDate;
 
     public GuestBookListResponseDto(GuestBook entity) {
@@ -25,5 +26,6 @@ public class GuestBookListResponseDto {
         this.title = entity.getTitle();
         this.password = entity.getPassword();
         this.modifiedDate = entity.getModifiedDate();
+        this.rentday = entity.getRentday();
     }
 }
