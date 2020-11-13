@@ -10224,7 +10224,7 @@ var ModalUI_ModalUI = /*#__PURE__*/function () {
     ModalUI_classCallCheck(this, ModalUI);
 
     this.$modal = $node;
-    this.$backdrop = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-modal-backdrop"/>');
+    this.$backdrop = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()();
   }
 
   ModalUI_createClass(ModalUI, [{

@@ -8,6 +8,7 @@ import kr.co.kcamp.service.cars.DirectCarsS3UploadService;
 import kr.co.kcamp.service.cars.ImportCarsS3UploadService;
 import kr.co.kcamp.service.cars.UsedCarsS3UploadService;
 import kr.co.kcamp.service.popup.PopUpS3UploadService;
+import kr.co.kcamp.service.posts.GuestBookService;
 import kr.co.kcamp.service.posts.NoticeService;
 import kr.co.kcamp.service.posts.PostsService;
 import kr.co.kcamp.web.dto.DirectCarsDto;
@@ -33,6 +34,7 @@ public class IndexController {
     private final PostsService postsService;
     private final NoticeService noticeService;
     private final BookCarService bookCarService;
+    private final GuestBookService guestBookService;
     private final HttpSession httpSession;
     private final DirectCarsS3UploadService directCarsS3UploadService;
 
@@ -75,6 +77,20 @@ public class IndexController {
         }
 
         return "snslogin";
+    }
+
+    @GetMapping("/personlogin")
+    public String personlogin(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "regilogin";
     }
 
     @GetMapping("/carprocess")
@@ -129,11 +145,14 @@ public class IndexController {
     }
 
     @GetMapping("/schedule")
-    public String scheduletest(Model model, @LoginUser SessionUser user) {
+    public String scheduletest(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
         model.addAttribute("schedulelist", bookCarService.findAllDesc());
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("posts", postsService.getBoardList(pageable));
 
         return "scheduletest";
     }
@@ -148,10 +167,13 @@ public class IndexController {
     }
 
     @GetMapping("/contactus")
-    public String contactus(Model model, @LoginUser SessionUser user) {
+    public String contactus(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("guestbook", guestBookService.findAllDesc());
 
         return "qaboard";
     }

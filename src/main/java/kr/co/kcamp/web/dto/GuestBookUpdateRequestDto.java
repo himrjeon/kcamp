@@ -12,16 +12,16 @@ public class GuestBookUpdateRequestDto {
     private String phonenum;
     private String email;
     private String content;
-    private String nowcar;
-    private String salecheck;
+    private String title;
+    private String password;
 
     @Builder
-    public GuestBookUpdateRequestDto(String guestname, String phonenum, String email, String content, String nowcar, String salecheck) {
+    public GuestBookUpdateRequestDto(String guestname, String phonenum, String email, String content, String title, String password) {
         this.guestname = guestname;
         this.phonenum = phonenum;
         this.email = email;
         this.content = content;
-        this.nowcar = nowcar;
-        this.salecheck = salecheck;
+        this.title = title;
+        this.password = password;
     }
 }

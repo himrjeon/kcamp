@@ -66,25 +66,54 @@
             </div>
             <div class="collapse navbar-collapse" id="custom-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a class="dropdown-toggle" href="/guide">GUIDE</a>
-
+                    <li class="dropdown"><a class="dropdown-toggle" href="/about" data-toggle="dropdown">회사소개</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about">회사소개</a></li>
+                            <li><a href="/aboutcar">차량소개</a></li>
+                        </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/schedule">SCHEDULE</a>
+                    <li class="dropdown"><a class="dropdown-toggle" href="/notice" data-toggle="dropdown">공지사항</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="/portfolio">포트폴리오</a></li>
+                        </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/reservation">RESERVATION</a>
-
+                    <li class="dropdown"><a class="dropdown-toggle" href="/schedule">예약</a>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/gallery">GALLERY</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/location">LOCATION</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/contactus">Q&A</a>
-
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" href="/review">REVIEW</a>
-
+                    <li class="dropdown"><a class="dropdown-toggle" href="/gallery">갤러리</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" href="/contactus">문의사항</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" href="/review">후기</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="icon-profile-male" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {{#uName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
+                                <li>
+                                    <a href="#">사용자이름 : {{uName}}</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">로그아웃</a>
+                                    <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                                </li>
+                            {{/uName}}
+                            {{#dName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
+                                <li>
+                                    <a href="#">사용자이름 : {{dName}}</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">로그아웃</a>
+                                    <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                                </li>
+                            {{/dName}}
+                            {{^uName}}
+                                {{^dName}}
+                                    <li>
+                                        <a href="/personlogin">로그인</a>
+                                    </li>
+                                {{/dName}}
+                            {{/uName}}
+                        </ul>
                     </li>
                 </ul>
             </div>

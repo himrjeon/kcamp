@@ -25,5 +25,46 @@
     </div>
 </section>
 <div class="main">
+    <section class="module-small" id="latest">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">포트폴리오</h2>
+                </div>
+            </div>
+            <div class="row multi-columns-row">
+
+            </div>
+            <div class="row mt-30">
+                <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="/importcar">더 보기</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="module" id="news">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">공지사항</h2>
+                </div>
+            </div>
+            <div class="row multi-columns-row post-columns wo-border">
+                {{#notice}}
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="post mb-40">
+                            <div class="post-header font-alt">
+                                <h2 class="post-title"><a href="#">{{title}}</a></h2>
+                            </div>
+                            <div class="post-entry">
+                                {{#content}}
+                                    <p>{{content}}</p>
+                                {{/content}}
+                            </div>
+                            <div class="post-more"><a class="more-link" href="#">더 보기</a></div>
+                        </div>
+                    </div>
+                {{/notice}}
+            </div>
+        </div>
+    </section>
 
     {{>layout/footermain}}

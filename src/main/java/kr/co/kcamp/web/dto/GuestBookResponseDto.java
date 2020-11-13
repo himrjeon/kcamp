@@ -12,8 +12,8 @@ public class GuestBookResponseDto{
     private String phonenum;
     private String email;
     private String content;
-    private String nowcar;
-    private String salecheck;
+    private String title;
+    private String password;
     private LocalDateTime modifiedDate;
 
     public GuestBookResponseDto(GuestBook entity) {
@@ -22,8 +22,8 @@ public class GuestBookResponseDto{
         this.phonenum = entity.getPhonenum();
         this.email = entity.getEmail();
         this.content = entity.getContent();
-        this.nowcar = entity.getNowcar();
-        this.salecheck = entity.getSalecheck();
+        this.title = entity.getTitle();
+        this.password = entity.getPassword();
         this.modifiedDate = entity.getModifiedDate();
     }
 }

@@ -11,13 +11,54 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <h2 class="module-title font-alt">문의사항</h2>
+                    <h2 class="module-title font-alt">문의사항 목록</h2>
+                    <div class="module-subtitle font-serif"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <br>
+                    <table class="table table-horizontal table-bordered">
+                        <thead class="thead-strong">
+                        <tr>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>등록일</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        {{#guestbook}} <!-- posts라는 List를 순회, for문과 동일하게 생각 -->
+                        <tr>
+                            <td><a href="/contactus/detail/{{id}}">{{title}}</a></td>
+                            <td>{{guestname}}</td>
+                            <td>{{modifiedDate}}</td>
+                            <input type="hidden" id="password" name="password" value="{{password}}"/>
+                        </tr>
+                        {{/guestbook}}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">행사 및 예약 문의</h2>
                     <div class="module-subtitle font-serif"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <form id="contactForm" role="form" method="post" action="php/contact.php">
+                        <div class="form-group">
+                            <label class="sr-only" for="title">Title</label>
+                            <input class="form-control" type="text" id="title" name="title" placeholder="제목*" required="required" data-validation-required-message="제목"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
                         <div class="form-group">
                             <label class="sr-only" for="name">Name</label>
                             <input class="form-control" type="text" id="guestname" name="guestname" placeholder="성함*" required="required" data-validation-required-message="성함"/>
@@ -31,6 +72,11 @@
                         <div class="form-group">
                             <label class="sr-only" for="email">Email</label>
                             <input class="form-control" type="email" id="email" name="email" placeholder="이메일 주소*" required="required" data-validation-required-message="이메일 주소"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="비밀번호*" required="required" data-validation-required-message="제목"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">

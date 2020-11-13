@@ -364,10 +364,12 @@ var main = {
 
          guestsave : function () {
                  var data = {
+                     title: $('#title').val(),
                      guestname: $('#guestname').val(),
                      phonenum: $('#phonenum').val(),
                      email: $('#email').val(),
-                     content: $('#content').val()
+                     content: $('#content').val(),
+                     password: $('#password').val()
                  };
                  $.ajax({
                              type: 'POST',

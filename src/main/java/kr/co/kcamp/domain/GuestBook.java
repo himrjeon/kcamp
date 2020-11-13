@@ -16,6 +16,9 @@ public class GuestBook extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private String guestname;
 
     @Column(nullable = false)
@@ -28,19 +31,16 @@ public class GuestBook extends BaseTimeEntity {
     private String content;
 
     @Column
-    private String nowcar;
-
-    @Column
-    private String salecheck;
+    private String password;
 
     @Builder // 해당 클래스 빌더패턴 클래스 생성, 생성자 상단 선언시 생성자 포함된 필드만 빌더 포함
-    public GuestBook(String guestname, String phonenum, String email, String content, String nowcar, String salecheck) {
+    public GuestBook(String guestname, String phonenum, String email, String content, String title, String password) {
         this.guestname = guestname;
         this.phonenum = phonenum;
         this.email = email;
         this.content = content;
-        this.nowcar = nowcar;
-        this.salecheck = salecheck;
+        this.title = title;
+        this.password = password;
     }
 
     public void update(String content) {
