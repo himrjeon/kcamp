@@ -16,14 +16,9 @@ public class DealerUserDto {
     private String name;
     private String userid;
     private String password;
-    private String picture;
-    private String shopname;
-    private String shopadd;
     private String phonenum;
-    private String shopnum;
     private String email;
     private String regicheck;
-    private String picturefullpath;
 
     public DealerUser toEntity(){
         DealerUser build = DealerUser.builder()
@@ -31,30 +26,21 @@ public class DealerUserDto {
                 .name(name)
                 .userid(userid)
                 .password(password)
-                .picture(picture)
-                .shopname(shopname)
-                .shopadd(shopadd)
                 .phonenum(phonenum)
-                .shopnum(shopnum)
                 .email(email)
                 .regicheck(regicheck)
                 .build();
         return build;
     }
     @Builder
-    public DealerUserDto(Long id, String name, String userid, String password, String picture, String shopname, String shopadd, String phonenum, String shopnum, String email,  String regicheck, String picturefullpath) {
+    public DealerUserDto(Long id, String name, String userid, String password,  String phonenum, String email,  String regicheck) {
         this.id = id;
         this.name = name;
         this.userid = userid;
         this.password = password;
-        this.shopname = shopname;
-        this.shopadd = shopadd;
         this.phonenum = phonenum;
-        this.shopnum = shopnum;
         this.email = email;
-        this.picture = picture;
         this.regicheck = regicheck;
-        this.picturefullpath = picturefullpath;
     }
 
 }

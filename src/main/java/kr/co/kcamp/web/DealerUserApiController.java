@@ -20,9 +20,7 @@ public class DealerUserApiController {
 
     @PostMapping("/api/v2/dealer")
     @ResponseBody
-    public String dealsave(DealerUserDto dealerUserDto, MultipartFile file) throws IOException {
-        String picture = s3Service.upload(dealerUserDto.getPicture(), file);
-        dealerUserDto.setPicture(picture);
+    public String dealsave(DealerUserDto dealerUserDto) throws IOException {
 
         dealerUserLoginService.savePost(dealerUserDto);
 

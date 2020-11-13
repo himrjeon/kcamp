@@ -27,19 +27,7 @@ public class DealerUser implements Serializable {
     private String password;
 
     @Column
-    private String picture;
-
-    @Column
-    private String shopname;
-
-    @Column
-    private String shopadd;
-
-    @Column
     private String phonenum;
-
-    @Column
-    private String shopnum;
 
     @Column
     private String email;
@@ -48,28 +36,21 @@ public class DealerUser implements Serializable {
     private String regicheck;
 
     @Builder
-    public DealerUser(Long id, String name, String userid, String password, String picture, String shopname, String shopadd, String phonenum, String shopnum, String email,  String regicheck) {
+    public DealerUser(Long id, String name, String userid, String password,String phonenum, String email,  String regicheck) {
         this.id = id;
         this.name = name;
         this.userid = userid;
         this.password = password;
-        this.shopname = shopname;
-        this.shopadd = shopadd;
         this.phonenum = phonenum;
-        this.shopnum = shopnum;
         this.email = email;
-        this.picture = picture;
         this.regicheck = regicheck;
     }
 
-    public void update(String name, String userid, String password, String picture, String shopname, String shopadd, String phonenum, String shopnum, String email,  String regicheck) {
+    public void update(String name, String userid, String password, String phonenum, String email,  String regicheck) {
         this.name = name;
         this.userid = userid;
         this.password = password;
-        this.shopname = shopname;
-        this.shopadd = shopadd;
         this.phonenum = phonenum;
-        this.shopnum = shopnum;
         this.email = email;
         this.regicheck = regicheck;
     }

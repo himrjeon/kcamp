@@ -3,18 +3,12 @@ package kr.co.kcamp.web;
 import kr.co.kcamp.config.auth.LoginUser;
 import kr.co.kcamp.config.auth.dto.SessionUser;
 import kr.co.kcamp.domain.DealerUser;
-import kr.co.kcamp.service.cars.BookCarService;
-import kr.co.kcamp.service.cars.DirectCarsS3UploadService;
-import kr.co.kcamp.service.cars.ImportCarsS3UploadService;
-import kr.co.kcamp.service.cars.UsedCarsS3UploadService;
+import kr.co.kcamp.service.cars.*;
 import kr.co.kcamp.service.popup.PopUpS3UploadService;
 import kr.co.kcamp.service.posts.GuestBookService;
 import kr.co.kcamp.service.posts.NoticeService;
 import kr.co.kcamp.service.posts.PostsService;
-import kr.co.kcamp.web.dto.DirectCarsDto;
-import kr.co.kcamp.web.dto.ImportCarsDto;
-import kr.co.kcamp.web.dto.PopupDto;
-import kr.co.kcamp.web.dto.UsedCarsDto;
+import kr.co.kcamp.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -35,6 +29,7 @@ public class IndexController {
     private final NoticeService noticeService;
     private final BookCarService bookCarService;
     private final GuestBookService guestBookService;
+    private final ShowRoomS3UploadService showRoomS3UploadService;
     private final HttpSession httpSession;
     private final DirectCarsS3UploadService directCarsS3UploadService;
 
@@ -62,6 +57,20 @@ public class IndexController {
         }
 
         return "about";
+    }
+
+    @GetMapping("/aboutcar")
+    public String aboutcar(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "aboutcar";
     }
 
     @GetMapping("/snslogin")
@@ -177,6 +186,37 @@ public class IndexController {
         return "qaboard";
     }
 
+    @GetMapping("/password/{id}")
+    public String pasw(Model model, @LoginUser SessionUser user, @PathVariable Long id) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        GuestBookResponseDto dto = guestBookService.findById(id);
+        model.addAttribute("guestbook",dto);
+
+        return "password";
+    }
+
+    @GetMapping("/contactus/detail/{id}")
+    public String adminGuestBookDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+
+        GuestBookResponseDto dto = guestBookService.findById(id);
+        model.addAttribute("guestbook",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "contactus-detail";
+    }
+
+
+
     @GetMapping("/reservation")
     public String reservation(Model model, @LoginUser SessionUser user,  @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
 
@@ -216,6 +256,45 @@ public class IndexController {
         }
 
         return "gallery-detail";
+    }
+
+    @GetMapping("/portfolio")
+    public String portfolio(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        // List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        // model.addAttribute("galleryList", showRoomDtoList);
+
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("galleryList", showRoomDtoList);
+
+        return "portfolio";
+    }
+
+    @GetMapping("/portfolio/detail/{id}")
+    public String showRoomDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        ShowRoomDto dto = showRoomS3UploadService.findById(id);
+        model.addAttribute("showroom",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "portfolio-detail";
     }
 
 

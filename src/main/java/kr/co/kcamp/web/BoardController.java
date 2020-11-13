@@ -129,7 +129,7 @@ public class BoardController {
         return "freeboard";
     }
 
-    @GetMapping("/news")
+    @GetMapping("/notice")
     public String newsboard(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
         model.addAttribute("news", newsServices.findAllDesc());
         // 기존에 httpSesstion.getAttribute("user")로 가져오던 세션 정보 값이 개선됨.
@@ -156,7 +156,7 @@ public class BoardController {
         return "news";
     }
 
-    @GetMapping("/news/save")
+    @GetMapping("/notice/save")
     public String newsSave(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
@@ -170,7 +170,7 @@ public class BoardController {
             return "news-save";
     }
 
-    @GetMapping("/news/update/{id}")
+    @GetMapping("/notice/update/{id}")
     public String newsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
 
         NewsResponseDto dto = newsServices.findById(id);
@@ -188,7 +188,7 @@ public class BoardController {
         return "news-update";
     }
 
-    @GetMapping("/news/detail/{id}")
+    @GetMapping("/notice/detail/{id}")
     public String newsDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
 
         NewsResponseDto dto = newsServices.findById(id);

@@ -115,6 +115,11 @@ var main = {
             _this.showroomdelete();
         });
 
+        $('#passwordc').on('click', function() {
+            _this.passwordc();
+        });
+
+
         },
     save : function () {
             var data = {
@@ -206,7 +211,7 @@ var main = {
                         data: JSON.stringify(data)
                     }).done(function() {
                         alert('글이 등록되었습니다.');
-                        window.location.href = '/admin/news';
+                        window.location.href = '/admin/notice';
                     }).fail(function (error) {
                         alert(JSON.stringify(error));
                     });
@@ -231,7 +236,7 @@ var main = {
                 data: JSON.stringify(data)
             }).done(function() {
                 alert('글이 수정되었습니다.');
-                window.location.href = '/admin/news';
+                window.location.href = '/admin/notice';
             }).fail(function (error) {
                 alert(JSON.stringfy(error));
             });
@@ -291,7 +296,7 @@ var main = {
             contentType: 'application/json; charset=utf-8'
         }).done(function() {
             alert('글이 삭제되었습니다. ');
-            window.location.href = '/admin/news';
+            window.location.href = '/admin/notice';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -634,7 +639,7 @@ var main = {
                                   data: formData
                               }).done(function() {
                                   alert('회원 정보가 수정되었습니다.');
-                                  window.location.href = '/admin/dealer';
+                                  window.location.href = '/admin/user';
                               }).fail(function (error) {
                                   alert(JSON.stringfy(error));
                               });
@@ -648,7 +653,7 @@ var main = {
                           dataType: 'json',
                           contentType: 'application/json; charset=utf-8'
                       }).done(function() {
-                          alert('차량이 삭제되었습니다. ');
+                          alert('회원이 삭제되었습니다. ');
                           window.location.reload();
                       }).fail(function (error) {
                           alert(JSON.stringify(error));
@@ -675,10 +680,22 @@ var main = {
                     });
             },
 
+passwordc : function () {
+        var pw1 = document.getElementById('password');
+        var pw2 = document.getElementById('pass');
+        console.log(pw1)
+        var id = document.getElementById('id');
+        if(pw1.value!=pw2.value){
+        alert("비밀번호가 다릅니다.")
+        } else{
+           window.location.href ='/contactus/detail/'+id.value;
+        }
+
+        },
+
  dealsave : function () {
           var form = $('#dealform')[0];
                 var formData = new FormData(form);
-                formData.append("file", $("#file")[0].files[0]);
             $.ajax({
                         type: 'POST',
                         url: '/api/v2/dealer',
@@ -686,7 +703,7 @@ var main = {
                         contentType: false,
                         data: formData
                     }).done(function() {
-                        alert('가입신청이 완료됐습니다.');
+                        alert('가입이 완료됐습니다.');
                         window.location.href = '/';
                     }).fail(function (error) {
                         alert(JSON.stringify(error));

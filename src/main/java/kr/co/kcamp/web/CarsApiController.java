@@ -332,47 +332,9 @@ public class CarsApiController {
 
     @PostMapping("/api/v2/showroom")
     @ResponseBody
-    public String showroomupload(ShowRoomDto showRoomDto, MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20) throws IOException {
+    public String showroomupload(ShowRoomDto showRoomDto, MultipartFile file) throws IOException {
         String imgPath = s3Service.upload(showRoomDto.getFilePath(), file);
         showRoomDto.setFilePath(imgPath);
-        String imgPath2 = s3Service.upload(showRoomDto.getFilePath2(), file2);
-        showRoomDto.setFilePath2(imgPath2);
-        String imgPath3 = s3Service.upload(showRoomDto.getFilePath3(), file3);
-        showRoomDto.setFilePath3(imgPath3);
-        String imgPath4 = s3Service.upload(showRoomDto.getFilePath4(), file4);
-        showRoomDto.setFilePath4(imgPath4);
-        String imgPath5 = s3Service.upload(showRoomDto.getFilePath5(), file5);
-        showRoomDto.setFilePath5(imgPath5);
-        String imgPath6 = s3Service.upload(showRoomDto.getFilePath6(), file6);
-        showRoomDto.setFilePath6(imgPath6);
-        String imgPath7 = s3Service.upload(showRoomDto.getFilePath7(), file7);
-        showRoomDto.setFilePath7(imgPath7);
-        String imgPath8 = s3Service.upload(showRoomDto.getFilePath8(), file8);
-        showRoomDto.setFilePath8(imgPath8);
-        String imgPath9 = s3Service.upload(showRoomDto.getFilePath9(), file9);
-        showRoomDto.setFilePath9(imgPath9);
-        String imgPath10 = s3Service.upload(showRoomDto.getFilePath10(), file10);
-        showRoomDto.setFilePath10(imgPath10);
-        String imgPath11 = s3Service.upload(showRoomDto.getFilePath11(), file11);
-        showRoomDto.setFilePath11(imgPath11);
-        String imgPath12 = s3Service.upload(showRoomDto.getFilePath12(), file12);
-        showRoomDto.setFilePath12(imgPath12);
-        String imgPath13 = s3Service.upload(showRoomDto.getFilePath13(), file13);
-        showRoomDto.setFilePath13(imgPath13);
-        String imgPath14 = s3Service.upload(showRoomDto.getFilePath14(), file14);
-        showRoomDto.setFilePath14(imgPath14);
-        String imgPath15 = s3Service.upload(showRoomDto.getFilePath15(), file15);
-        showRoomDto.setFilePath15(imgPath15);
-        String imgPath16 = s3Service.upload(showRoomDto.getFilePath16(), file16);
-        showRoomDto.setFilePath16(imgPath16);
-        String imgPath17 = s3Service.upload(showRoomDto.getFilePath17(), file17);
-        showRoomDto.setFilePath17(imgPath17);
-        String imgPath18 = s3Service.upload(showRoomDto.getFilePath18(), file18);
-        showRoomDto.setFilePath18(imgPath18);
-        String imgPath19 = s3Service.upload(showRoomDto.getFilePath19(), file19);
-        showRoomDto.setFilePath19(imgPath19);
-        String imgPath20 = s3Service.upload(showRoomDto.getFilePath20(), file20);
-        showRoomDto.setFilePath20(imgPath20);
         String sText = StringEscapeUtils.unescapeHtml3(showRoomDto.getContent());
         showRoomDto.setContent(sText);
         showRoomS3UploadService.savePost(showRoomDto);
@@ -390,47 +352,9 @@ public class CarsApiController {
 
 
     @PostMapping("/api/v2/showroom/update/{id}")
-    public Long showroomupdate(@PathVariable Long id,  MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20, @ModelAttribute ShowRoomDto showRoomDto) throws IOException {
+    public Long showroomupdate(@PathVariable Long id,  MultipartFile file, @ModelAttribute ShowRoomDto showRoomDto) throws IOException {
         String imgPath = s3Service.upload(showRoomDto.getFilePath(), file);
         showRoomDto.setFilePath(imgPath);
-        String imgPath2 = s3Service.upload(showRoomDto.getFilePath2(), file2);
-        showRoomDto.setFilePath2(imgPath2);
-        String imgPath3 = s3Service.upload(showRoomDto.getFilePath3(), file3);
-        showRoomDto.setFilePath3(imgPath3);
-        String imgPath4 = s3Service.upload(showRoomDto.getFilePath4(), file4);
-        showRoomDto.setFilePath4(imgPath4);
-        String imgPath5 = s3Service.upload(showRoomDto.getFilePath5(), file5);
-        showRoomDto.setFilePath5(imgPath5);
-        String imgPath6 = s3Service.upload(showRoomDto.getFilePath6(), file6);
-        showRoomDto.setFilePath6(imgPath6);
-        String imgPath7 = s3Service.upload(showRoomDto.getFilePath7(), file7);
-        showRoomDto.setFilePath7(imgPath7);
-        String imgPath8 = s3Service.upload(showRoomDto.getFilePath8(), file8);
-        showRoomDto.setFilePath8(imgPath8);
-        String imgPath9 = s3Service.upload(showRoomDto.getFilePath9(), file9);
-        showRoomDto.setFilePath9(imgPath9);
-        String imgPath10 = s3Service.upload(showRoomDto.getFilePath10(), file10);
-        showRoomDto.setFilePath10(imgPath10);
-        String imgPath11 = s3Service.upload(showRoomDto.getFilePath11(), file11);
-        showRoomDto.setFilePath11(imgPath11);
-        String imgPath12 = s3Service.upload(showRoomDto.getFilePath12(), file12);
-        showRoomDto.setFilePath12(imgPath12);
-        String imgPath13 = s3Service.upload(showRoomDto.getFilePath13(), file13);
-        showRoomDto.setFilePath13(imgPath13);
-        String imgPath14 = s3Service.upload(showRoomDto.getFilePath14(), file14);
-        showRoomDto.setFilePath14(imgPath14);
-        String imgPath15 = s3Service.upload(showRoomDto.getFilePath15(), file15);
-        showRoomDto.setFilePath15(imgPath15);
-        String imgPath16 = s3Service.upload(showRoomDto.getFilePath16(), file16);
-        showRoomDto.setFilePath16(imgPath16);
-        String imgPath17 = s3Service.upload(showRoomDto.getFilePath17(), file17);
-        showRoomDto.setFilePath17(imgPath17);
-        String imgPath18 = s3Service.upload(showRoomDto.getFilePath18(), file18);
-        showRoomDto.setFilePath18(imgPath18);
-        String imgPath19 = s3Service.upload(showRoomDto.getFilePath19(), file19);
-        showRoomDto.setFilePath19(imgPath19);
-        String imgPath20 = s3Service.upload(showRoomDto.getFilePath20(), file20);
-        showRoomDto.setFilePath20(imgPath20);
         String sText = StringEscapeUtils.unescapeHtml3(showRoomDto.getContent());
         showRoomDto.setContent(sText);
 

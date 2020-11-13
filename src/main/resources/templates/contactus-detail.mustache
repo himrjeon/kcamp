@@ -1,0 +1,40 @@
+1{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">문의사항 게시판</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">{{guestbook.title}}</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">{{guestbook.guestname}}</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            <p>연락처 : {{guestbook.phonenum}}</p>
+                            <p>이메일 : {{guestbook.email}}</p>
+                            <p>문의내용 : {{guestbook.content}}</p>
+                            <p>등록일자 : {{guestbook.modifiedDate}}</p>
+                        </div>
+                        <a href="/contactus" role="button" class="btn btn-g btn-round">목록보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+{{>layout/footermain}}

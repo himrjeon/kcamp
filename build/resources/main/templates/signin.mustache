@@ -5,7 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <h1 class="module-title font-alt mb-0">일반 회원가입</h1>
+                    <h1 class="module-title font-alt">일반 회원가입</h1>
+                    <div class="module-subtitle font-serif">회원가입시 할인 쿠폰을 드립니다.</div>
                 </div>
             </div>
         </div>
@@ -27,24 +28,12 @@
                             <input class="form-control" id="name" name="name" type="text" placeholder="이름"/>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="shopname" name="shopname" type="text" placeholder="상사명"/>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" id="shopadd" name="shopadd" type="text" placeholder="상사주소"/>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="shopnum" name="shopnum" placeholder="상사 전화번호"/>
-                        </div>
-                        <div class="form-group">
                             <input class="form-control" type="text" id="phonenum" name="phonenum" placeholder="휴대번호"/>
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" id="email" name="email" placeholder="이메일"/>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" id="file" name="file" type="file"/>
-                        </div>
-                        <input type="hidden" id="regicheck" name="regicheck" value="1">
+                        <input type="hidden" id="regicheck" name="regicheck" value="0">
                     </form>
                     <a href="/snslogin" role="button" class="btn btn-g btn-round">취소</a>
                     <button type="button" class="btn btn-primary" id="btn-deal-save">가입신청</button>

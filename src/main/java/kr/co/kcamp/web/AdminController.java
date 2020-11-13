@@ -361,6 +361,62 @@ public class AdminController {
         return "admin-notice";
     }
 
+    @GetMapping("/admin/notice")
+    public String newsboard(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        // model.addAttribute("news", newsServices.findAllDesc());
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("news", newsServices.getBoardList(pageable));
+
+        return "admin-news";
+    }
+
+    @GetMapping("/admin/portfolio")
+    public String portfolio(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        // List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        // model.addAttribute("galleryList", showRoomDtoList);
+
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("galleryList", showRoomDtoList);
+
+        return "admin-showroom";
+    }
+
+    @GetMapping("/admin/portfolio/save")
+    public String showRoomSave(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "admin-showroom-save";
+    }
+
 
 
 }

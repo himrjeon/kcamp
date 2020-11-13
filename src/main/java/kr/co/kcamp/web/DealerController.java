@@ -24,10 +24,10 @@ public class DealerController {
     @GetMapping("/signup")
     public String about(Model model, @LoginUser SessionUser user) {
 
-        return "dealeruserregi";
+        return "signin";
     }
 
-    @GetMapping("/admin/dealer")
+    @GetMapping("/admin/user")
     public String dealerlist(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
@@ -39,7 +39,7 @@ public class DealerController {
         return "admin-dealer";
     }
 
-    @GetMapping("/admin/dealer/detail/{id}")
+    @GetMapping("/admin/user/detail/{id}")
     public String dealerdetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         DealerUserDto dto = dealerUserLoginService.findById(id);
         model.addAttribute("dealer",dto);
@@ -54,11 +54,9 @@ public class DealerController {
     public String signIn(@RequestBody DealerUserDto dealerUserDto) {
         String userid = dealerUserDto.getUserid();
         String password = dealerUserDto.getPassword();
-        System.out.println(userid);
-        System.out.println(password);
         DealerUser dealerUser = dealerUserRepository.findUser(userid, password);
         if(dealerUser != null) {
-            return "/freeboard";
+            return "/";
         }
         return "/";
     }

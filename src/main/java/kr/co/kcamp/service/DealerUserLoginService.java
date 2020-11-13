@@ -21,7 +21,6 @@ import java.util.List;
 public class DealerUserLoginService {
     private DealerUserRepository dealerUserRepository;
     private final HttpSession httpSession;
-    private S3Service s3Service;
 
     public void savePost(DealerUserDto dealerUserDto) {
         dealerUserRepository.save(dealerUserDto.toEntity());
@@ -50,7 +49,7 @@ public class DealerUserLoginService {
     public Long update(Long id, DealerUserDto requestDto) {
         DealerUser entity = dealerUserRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
 
-        entity.update(requestDto.getName(), requestDto.getUserid(), requestDto.getPassword(), requestDto.getPicture(), requestDto.getShopname(), requestDto.getShopadd(), requestDto.getPhonenum(), requestDto.getShopnum(), requestDto.getEmail(), requestDto.getRegicheck());
+        entity.update(requestDto.getName(), requestDto.getUserid(), requestDto.getPassword(), requestDto.getPhonenum(),  requestDto.getEmail(), requestDto.getRegicheck());
 
         return id;
     }
@@ -80,14 +79,9 @@ public class DealerUserLoginService {
                 .name(galleryEntity.getName())
                 .userid(galleryEntity.getUserid())
                 .password(galleryEntity.getPassword())
-                .picture(galleryEntity.getPicture())
-                .shopname(galleryEntity.getShopname())
-                .shopadd(galleryEntity.getShopadd())
                 .phonenum(galleryEntity.getPhonenum())
-                .shopnum(galleryEntity.getShopnum())
                 .email(galleryEntity.getEmail())
                 .regicheck(galleryEntity.getRegicheck())
-                .picturefullpath("https://" + s3Service.CLOUD_FRONT_DOMAIN_NAME + "/" + galleryEntity.getPicture())
                 .build();
     }
 

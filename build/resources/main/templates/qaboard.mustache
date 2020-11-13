@@ -29,10 +29,9 @@
                         <tbody id="tbody">
                         {{#guestbook}} <!-- posts라는 List를 순회, for문과 동일하게 생각 -->
                         <tr>
-                            <td><a href="/contactus/detail/{{id}}">{{title}}</a></td>
+                            <td><a href="/password/{{id}}">{{title}}</a></td>
                             <td>{{guestname}}</td>
                             <td>{{modifiedDate}}</td>
-                            <input type="hidden" id="password" name="password" value="{{password}}"/>
                         </tr>
                         {{/guestbook}}
                         </tbody>
