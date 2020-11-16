@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- custom -->
     <link href="/css/schedule.css" rel="stylesheet" />
-    <script src="/js/app/schedule.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -60,9 +59,10 @@
             <div class = "domain">
                 <textarea class = "memo" id = "description" name = "description" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다">{{schedulelist.description}}</textarea>
             </div>
+            <input id = "id" type = "hidden" name = "id" value="{{schedulelist.id}}">
         </form>
         <a href="/admin/schedule/detail" role="button" class="btn btn-g btn-round">취소</a>
-        <button class = "ok-button" type= "button" id="book-btn-update">수정하기</button>
+        <button class = "ok-button" type= "button" id="book-btn-update">수정</button>
     </div>
 
 
