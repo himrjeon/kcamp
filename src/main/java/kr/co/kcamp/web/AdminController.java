@@ -83,15 +83,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/schedule/update/{id}")
-    public String scheduleUpdate(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String scheduleUpdate(Model model, @LoginUser SessionUser user, @PathVariable Long id) {
         // model.addAttribute("news", newsServices.findAllDesc());
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
-        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
-        model.addAttribute("next", pageable.next().getPageNumber());
-        model.addAttribute("schedulelist", bookCarService.getBoardList(pageable));
+        model.addAttribute("schedulelist", bookCarService.findById(id));
 
         return "admin-schedule-update";
     }
