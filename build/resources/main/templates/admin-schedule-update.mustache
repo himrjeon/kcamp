@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- custom -->
     <link href="/css/schedule.css" rel="stylesheet" />
-    <script src="/js/app/schedule.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -23,19 +22,19 @@
     <div class = "group-body">
         <form id = "scheduleData">
             <div class = "top">
-                <input class = "subject" id = "title" type = "text" name = "title" placeholder="제목을 입력해주세요" value="{{schedule.title}}">
+                <input class = "subject" id = "title" type = "text" name = "title" placeholder="제목을 입력해주세요" value="{{schedulelist.title}}">
             </div>
             <div class = "domain">
                 <h3 class = "zTree-h3"> 시작 </h3>
             </div>
             <div class = "domain">
-                <input class = "date" id = "start" type = "text" name = "start" value="{{schedule.start}}">
+                <input class = "date" id = "start" type = "text" name = "start" value="{{schedulelist.start}}">
             </div>
             <div class = "domain">
                 <h3 class = "zTree-h3"> 종료 </h3>
             </div>
             <div class = "domain">
-                <input class = "date" id = "end" type = "text" name = "end" value="{{schedule.end}}">
+                <input class = "date" id = "end" type = "text" name = "end" value="{{schedulelist.end}}">
             </div>
             <div class=" domain">
                 <h3 class="zTree-ph3"> 색상 </h3>
@@ -51,21 +50,23 @@
                     <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
                     <option value="#4d638c" style="color:#4d638c;">남색</option>
                     <option value="#495057" style="color:#495057;">검정색</option>
-                    <option value="{{schedule.textColor}}" style="color:{{schedule.textColor}};" selected>선택색상</option>
+                    <option value="{{schedulelist.textColor}}" style="color:{{schedulelist.textColor}};" selected>선택색상</option>
                 </select>
             </div>
             <div class = "domain">
                 <h3 class = "zTree-h3"> 메모 </h3>
             </div>
             <div class = "domain">
-                <textarea class = "memo" id = "description" name = "description" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다">{{schedule.description}}</textarea>
+                <textarea class = "memo" id = "description" name = "description" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다">{{schedulelist.description}}</textarea>
             </div>
+            <input id = "id" type = "hidden" name = "id" value="{{schedulelist.id}}">
         </form>
         <a href="/admin/schedule/detail" role="button" class="btn btn-g btn-round">취소</a>
-        <button class = "ok-button" type= "button" id="book-btn-update">수정하기</button>
+        <button class = "ok-button" type= "button" id="book-btn-update">수정</button>
     </div>
 
 
 </div>
+<script src="/js/app/index.js"></script>
 </body>
 </html>

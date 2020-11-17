@@ -310,7 +310,7 @@ public class AdminController {
         return "admin-directcar";
     }
 
-    @GetMapping("/admin/directcar/update/{id}")
+    @GetMapping("/admin/gallery/update/{id}")
     public String directCarsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         DirectCarsDto dto = directCarsS3UploadService.findById(id);
         model.addAttribute("directcar",dto);
@@ -327,7 +327,7 @@ public class AdminController {
         return "admin-directcar-update";
     }
 
-    @GetMapping("/admin/directcar/copy/{id}")
+    @GetMapping("/admin/gallery/copy/{id}")
     public String directCarsCopy(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         DirectCarsDto dto = directCarsS3UploadService.findById(id);
         model.addAttribute("directcar",dto);
